@@ -1,0 +1,11 @@
+{
+  "extends": "airbnb",
+  "env": {
+    "browser": true,
+    "node": true
+  },
+  "rules": {
+    "react/destructuring-assignment": "off",
+    "react/no-array-index-key": "off"
+  }
+}

@@ -45,9 +45,9 @@ class City extends React.Component {
     const { isLoading } = this.state;
     if (!selectedCity || !weathers || isLoading) {
       return (
-        <div className="container" style={{ paddingTop: '4rem' }}>
-          <div className="card" style={{ height: '26rem' }}>
-            <div className="spinner-grow" role="status" style={{ margin: 'auto' }}>
+        <div className="container container-top">
+          <div className="card empty-card">
+            <div className="spinner-grow center-spinner" role="status">
               <span className="sr-only">Loading...</span>
             </div>
           </div>
@@ -58,12 +58,12 @@ class City extends React.Component {
     const firstWeather = currentWeather.detailsPerDay[0];
 
     const title = `${selectedCity.city}, ${selectedCity.country}`;
-    const description = `${firstWeather.date.getHours()}:00 ${Math.floor(firstWeather.temp)}º`;
+    const description = `${Math.floor(firstWeather.temp)}º`;
     const { icon } = firstWeather;
     const altDescription = firstWeather.description;
 
     return (
-      <div className="container" style={{ paddingTop: '4rem' }}>
+      <div className="container container-top">
         <div className="card">
           <div className="card-body">
             {

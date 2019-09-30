@@ -2,18 +2,25 @@ import React from 'react';
 import Proptypes from 'prop-types';
 import WeatherDay from './WeatherDay';
 
+function getDayOfWeek(number) {
+  return ['Dom.', 'Lun.', 'Mar.', 'Mié.', 'Jue.', 'Vie.', 'Sáb.'][number];
+}
+
+function getTempOfDay(weather) {
+  return `${Math.floor(weather.detailsPerDay[0].temp_min)}º / ${Math.floor(weather.detailsPerDay[0].temp_max)}º`;
+}
+
 function FiveDaysRow(props) {
   const { weathers, onSelectDate } = props;
-  const tempOfDay = (weather) => `${Math.floor(weather.detailsPerDay[0].temp_min)}º / ${Math.floor(weather.detailsPerDay[0].temp_max)}º`;
   return (
     <div className="row">
       {
         weathers.map((weather, index) => (
           <div key={`${index}_day`} className="col-2">
             <WeatherDay
-              title="DOM."
-              description={tempOfDay(weather)}
-              altDescription=""
+              title={getDayOfWeek(weather.detailsPerDay[0].date.getDay())}
+              description={getTempOfDay(weather)}
+              altDescription={weather.detailsPerDay[0].description}
               icon={weather.detailsPerDay[0].icon}
               onClick={() => onSelectDate(weather)}
             />
